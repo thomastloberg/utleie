@@ -1,8 +1,10 @@
+@import 'colors.scss';
+
 @media (max-width: 767px) { 	/* if phone */
 	
 }
 @media (min-width: 767px) { 	/* if desktop */
-	body {
+	#root {
 		display: grid;
 		padding: 25px !important;
 		grid-template-columns: 1fr 1fr;
@@ -25,12 +27,12 @@
 }
 
 ::-webkit-scrollbar-track {
-	background-color: transparent;
+	background-color: $col-scrollbar-track;
 }
 
 ::-webkit-scrollbar-thumb {
 	border-radius: 20px;
-	background: #d6dee1;
+	background: $col-scrollbar-thumb;
 	background-clip: content-box;
 	border: 6px solid transparent;
 }
@@ -42,10 +44,10 @@ html {
 body {
 	margin: 0;
 	padding: 0;
-	color: #060606;
+	color: $col-fontcolor;
 	box-sizing: border-box;
-	background-color: #EFF2F4;
-  font-family: Roboto, sans-serif;
+	background-color: $col-background;
+	font-family: Roboto, sans-serif;
 }
 
 .noselect {
@@ -69,21 +71,25 @@ body {
 	position: fixed;
 	place-items: center;
 	background-color: rgba(0, 0, 0, .3);
+
+	.ContainerContent {
+		width: 250px;
+		padding: 15px;
+		cursor: default;
+		border-radius: 15px;
+		background-color: #fff;
+
+		.DialogHeader {
+			font-size: 26px;
+			padding: 7px 10px;
+			text-align: center;
+			margin-bottom: 20px;
+			border-bottom: 1px solid #E5E5E5;
+		}
+	}
 }
-.ShareContainer .ContainerContent {
-	cursor: default;
-	padding: 15px;
-	width: 250px;
-	border-radius: 15px;
-	background-color: #fff;
-}
-.ShareContainer .ContainerContent .DialogHeader {
-	font-size: 26px;
-	padding: 7px 10px;
-	text-align: center;
-	margin-bottom: 20px;
-	border-bottom: 1px solid #E5E5E5;
-}
+
+.ShareContainer .ContainerContent 
 .ShareContainer .ContainerContent input {
 	width: 95%;
 	cursor: text;
