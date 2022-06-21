@@ -11,9 +11,15 @@ Enkel utleiekalkulator for å få frem det økonomiske aspektet ved en utleiebol
 ## Installer
 
 ```
-npm install     // Installerer alle dependencies
 
-npm start       // Starter en lokal versjon
+cd {prosjekt-plassering}
+
+git clone git@github.com:thomastloberg/utleie.git {prosjekt-navn}       // Laster ned prosjektet til {prosjekt-plassering} / {prosjekt-navn}
+
+npm install                                                             // Installerer alle dependencies
+
+npm start                                                               // Starter en lokal versjon
+
 ```
 
 
