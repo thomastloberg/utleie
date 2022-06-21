@@ -4,7 +4,10 @@
 [TODO.md](https://github.com/thomastloberg/utleie/blob/master/TODO.md)
 
 
-### npm start
+## Bruk
 
+```
+npm install     // Installerer alle dependencies
 
-Laget med React
+npm start       // Starter en lokal versjon
+```
