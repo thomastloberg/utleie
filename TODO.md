@@ -1,18 +1,4 @@
 ## V2.0.0
-### Utleiepris
-Kalkuler minimum utleie beløp
-Maksimalpris vanskelig å estimere. Innverknad:
-    * Lokasjon
-    * Antall soverom
-    * Beregnet kunde: Singel / Familie / Student / Korttidsleie
-
-
-### Importert
-Importere data fra Finn.no fra link eller Finnkode
-
-### Del
-Generer json fil som inneholder data du la inn til share/
-
 ### => React
 Migrer Utleiekalkulator v1.0.0 til React
     CSS => SASS Migrering
@@ -39,6 +25,21 @@ Migrer Utleiekalkulator v1.0.0 til React
             - 
         - Total Oversikt MND/ÅR
  Side 3 - Plan
+
+### Utleiepris
+Kalkuler minimum utleie beløp
+Maksimalpris vanskelig å estimere. Innverknad:
+    * Lokasjon
+    * Antall soverom
+    * Beregnet kunde: Singel / Familie / Student / Korttidsleie
+
+
+### Importert
+Importere data fra Finn.no fra link eller Finnkode
+
+### Del
+Generer json fil som inneholder data du la inn til share/
+
 
 
 ## v2.5.0
