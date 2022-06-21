@@ -21,8 +21,13 @@ Generer json fil som inneholder data du la inn til share/
 
 ### React
 Migrer Utleiekalkulator v1.0.0 til React
-CSS => SASS Migrering
- JS => React kode
+    CSS => SASS Migrering
+     JS => React kode
+ JQuery => React kode
+
+
+
+
 
 
 ## V1.0.0
