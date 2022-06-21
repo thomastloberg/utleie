@@ -1,9 +1,13 @@
 ## Utleiekalkulator
 
+Enkel utleiekalkulator for å få frem det økonomiske aspektet ved en utleiebolig.
+
+
 [TODO](https://github.com/thomastloberg/utleie/blob/master/TODO.md)
 
 
-## Bruk
+
+## Installer
 
 ```
 npm install     // Installerer alle dependencies
