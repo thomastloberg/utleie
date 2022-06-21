@@ -8,7 +8,7 @@ Enkel utleiekalkulator for å få frem det økonomiske aspektet ved en utleiebol
 <br><br>
 
 
-## Installer
+## Installasjon
 
 ```
 
@@ -23,10 +23,7 @@ npm start                                                               // Start
 ```
 
 
-## Build
-
-### v2.0.0
-Under utvikling<br>
-
+## Utvikling
 ### v1.0.0
 Vanilla JS/CSS/HTML Utleie kalkulator
+[Kode](https://github.com/thomastloberg/utleie/blob/master/public/v1.html)
