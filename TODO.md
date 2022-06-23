@@ -7,6 +7,7 @@ Migrer Utleiekalkulator v1.0.0 til React<br>
 
  ### Redesign
  Mindre på hver side.<br>
+ - Vis mer -> Vis Mindre <- -knapper<br>
  Side 1 - Input<br>
         - 1.1 Hent data => JSON?<br>
                 Adresse, Bilde, BoligType, Størrelse, Kommunale avgifter, Soverom, Byggeår, Etasje(r), Bruksareal, Primærrom, Energimerking, Rom, Tomteareal, Formuesverdi, Verditakst, Prisantydning, Totalpris, Matrikkelinformasjon, Omkostningsdata, Link komplett salgsoppgave, Visningsinformasjon, Om nabolaget, Finnkode, Sist endret<br>
