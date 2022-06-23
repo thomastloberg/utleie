@@ -63,6 +63,9 @@ body {
 input {
 	text-align: right;
 }
+#input_annonse {
+	text-align: center;
+}
 
 .ShareContainer {
 	top: 0;
@@ -179,6 +182,13 @@ input {
 	margin-bottom: 16px;
 	border-bottom: 1px solid #E5E5E5;
 }
+.CategorySplit_Short {
+	margin-bottom: 16px;
+	border-bottom: 1px solid #E5E5E5;
+}
+.CategoryEnd {
+	margin-bottom: 16px;
+}
 .Row div:first-child {
 	padding: 5px;
 	text-align: right;
@@ -223,24 +233,24 @@ input {
 	cursor: pointer;
 	white-space: nowrap;
 }
-.AdLinkRow #output_annonse {
+.AnnonseRow #output_annonse {
 	opacity: 0.7;
 	font-size: 14px;
 	text-align: center;
 }
-.AdLinkRow #output_annonse:hover {
+.AnnonseRow #output_annonse:hover {
 	opacity: 1;
 	cursor: pointer;
 }
-.AdLinkRow span {
+.AnnonseRow span {
 	opacity: 0.7;
 	font-size: 12px;
 }
-.AdLinkRow span:hover {
+.AnnonseRow span:hover {
 	opacity: 1;
 	cursor: pointer;
 }
-.AdLinkRow input {
+.AnnonseRow input {
 	width: 90%;
 	border: 0px;
 	color: #65676B;
@@ -249,14 +259,14 @@ input {
 	border-radius: 20px;
 	background-color: #F0F2F5;
 }
-.AdLink_Title {
+.Annonse_Title {
 	margin: 5px 0;
 	text-align: center;
 }
-.AdLink_URL {
+.Annonse_URL {
 	text-align: center !important;
 }
-.AdLink_Buttons {
+.Annonse_Buttons {
 	text-align: center;
 	margin: 5px 0 10px 0;
 }

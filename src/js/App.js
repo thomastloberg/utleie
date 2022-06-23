@@ -17,11 +17,12 @@ function App() {
 
       <div className="InputContainer">
         <div className="RowHeader">Utleiekalkulator</div>
-		<div className="AdLinkRow">
-			<div className="AdLink_Title">Annonse</div>
-			<div className="AdLink_URL"><input id="input_annonse" type="text" placeholder="https://" value="" /></div>
-			<div className="AdLink_Buttons"><span>Kopier</span> - <span>Se annonse</span></div>
+		<div className="AnnonseRow CategorySplit_Short">
+			<div className="Annonse_Title">Annonse</div>
+			<div className="Annonse_URL"><input id="input_annonse" type="text" placeholder="https://" value="" /></div>
+			<div className="Annonse_Buttons"><span>Kopier</span> - <span>Se annonse</span></div>
 		</div>
+
 
         <Inputrow text='Kjøpesum' 			  type='number' defaultvalue='2300000' posttext=' kr' />
         <Inputrow text='Rente på lån' 		  type='number' detail='effektiv' defaultvalue='1.89' posttext=' %' />
@@ -35,25 +36,29 @@ function App() {
         <Inputrow text='Inflasjon' 			  type='number' detail='per år' defaultvalue='2.24' posttext=' %' />
         <Inputrow text='Formueverdi' 		  type='number' defaultvalue='500000' posttext=' kr' />
         <Inputrow text='Skatteprosent' 		  type='number' detail='Overskudd' defaultvalue='22' posttext=' %' />
-        <Inputrow text='Salgskostnad' 		  type='number' detail='Prosent av verdi' defaultvalue='1.75' posttext=' %' />
-        <Inputrow text='Kommunale avgifter'   type='number' detail='per år' defaultvalue='15000' posttext=' kr' />
+        <Inputrow text='Salgskostnad' 		  type='number' rowclassname='CategorySplit' detail='Prosent av verdi' defaultvalue='1.75' posttext=' %' />
+        
+
+		<Inputrow text='Kommunale avgifter'   type='number' detail='per år' defaultvalue='15000' posttext=' kr' />
         <Inputrow text='Fellesutgifter'   	  type='number' detail='per mnd' defaultvalue='0' posttext=' kr' />
         <Inputrow text='Vedlikehold'   	  	  type='number' detail='per år' defaultvalue='15000' posttext=' kr' />
         <Inputrow text='Husforsikring'   	  type='number' detail='per mnd' defaultvalue='375' posttext=' kr' />
         <Inputrow text='Søppelhandtering'     type='number' detail='per mnd' defaultvalue='200' posttext=' kr' />
         <Inputrow text='Feier'    			  type='number' detail='per mnd' defaultvalue='125' posttext=' kr' />
-        <Inputrow text='Eiendomsskatt'    	  type='number' detail='per mnd' defaultvalue='200' posttext=' kr' />
+        <Inputrow text='Eiendomsskatt'    	  type='number' rowclassname='CategorySplit' detail='per mnd' defaultvalue='200' posttext=' kr' />
         
+
 		<Textrow 
 			firstcol={(<><input type='checkbox' id='input_leieinntekterskattefritt' /><span className='noselect'>Bruker over 50% av eiendomen selv?</span></>)} 
 		/>
 		<Inputrow text='Leieinntekter'    	  type='number' detail='Leilighet nr. 1' defaultvalue='8000' posttext=' kr' />
 		<Inputrow text='Leieinntekter'    	  type='number' detail='Leilighet nr. 2' defaultvalue='0' posttext=' kr' />
 		<Inputrow text='Leieinntekter'    	  type='number' detail='Leilighet nr. 3' defaultvalue='0' posttext=' kr' />
-		<Inputrow text='Leieinntekter'    	  type='number' detail='Leilighet nr. 4' defaultvalue='0' posttext=' kr' />
+		<Inputrow text='Leieinntekter'    	  type='number' rowclassname='CategorySplit' detail='Leilighet nr. 4' defaultvalue='0' posttext=' kr' />
         
+
 		<Inputrow text='Antall år investering'type='select' range='1-30' defaultvalue='10' posttext='år' />
-        <Inputrow text='Antall år nedbetaling'type='select' range='1-30' defaultvalue='30' posttext='år' />
+        <Inputrow text='Antall år nedbetaling'type='select' rowclassname='CategoryEnd' range='1-30' defaultvalue='30' posttext='år' />
         
 	  </div>
 

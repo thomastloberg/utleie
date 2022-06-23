@@ -1,5 +1,6 @@
 ## V2.0.0
 ### Bugs
+- Avdrag lån stemmer ikke med bankene sine utdrag. Hvor er feilen?
 - Chrome fjerner Adlink_URL input grunnet falsk "reklame". Omvei/rename?
 
 ### => React
@@ -32,7 +33,9 @@ Migrer Utleiekalkulator v1.0.0 til React<br>
 ### Mangler
 - Dynamisk antall leiligheter/rom
 - Sikkerhet i bolig / kausjonist alternativ => Deaktiver egenkapital => Låst kapital hos kausjonist/bolig
-- utleieinntekter prosent av huskjøpssumm
+- utleieinntekter prosent av huskjøpssum
+- informasjon ang. utleie fra staten sine sider? Egen fane?
+- krysse vekk data som enkelte utgifter som ikke skal taes med?
 
 ### Utleiepris
 Kalkuler minimum utleie beløp<br>

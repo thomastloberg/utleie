@@ -9,6 +9,7 @@ import { TexttoID, readableNumber, removeSpaces } from '../js/Functions';
  * detail       = Comment under DisplayText/text to inform user
  * type         = number / text / select
  * defaultvalue = Gets the default value in the input
+ * rowclassname = More classes to add
  * posttext     = Text after the inputfield. Example: kr / %
  * range        = select range min-max
  * @returns 
@@ -21,10 +22,21 @@ function Inputrow(props) {
     const DefaultValue           = props.defaultvalue;
     const PostText               = (props.posttext !== '' ? props.posttext : '');
     const SelectRange            = props.range;                     /* min-max */
-
     const [inputValue, setValue] = useState((Type === 'number' ? readableNumber(DefaultValue) : DefaultValue));
+    const Classes                = ['Row'];
 
-    //console.log(`${Type} => Type === 'number' => ` + Boolean(Type === 'number').toString());
+
+    /**
+     * Add default class 'Row' and all classes in props.rowclassname
+     */
+    if(props.rowclassname === undefined) {                  // No class to add
+    } else if(props.rowclassname.includes(' ')) {           // Multiple classes to add
+        props.rowclassname.split(' ').each((aClass) => {
+            Classes.push(aClass);
+        });
+    } else {                                                // Only one class to add
+        Classes.push(props.rowclassname);
+    }
 
 
     /**
@@ -57,6 +69,7 @@ function Inputrow(props) {
         }
     }
 
+
     /**
      * handleClick: Move cursor to ending
      */
@@ -73,7 +86,7 @@ function Inputrow(props) {
     switch (Type) {
         case 'number':
             return (
-                <div className="Row">
+                <div className={Classes.join(' ')}>
                     <div>{DisplayText}:{DetailText}</div>
                     <div><input id={ID} type="text" className="number" value={inputValue} onClick={handleClick} onChange={handleChange} />{PostText}</div>
                 </div>
@@ -88,7 +101,7 @@ function Inputrow(props) {
             }
     
             return (
-                <div className="Row">
+                <div className={Classes.join(' ')}>
                     <div>{DisplayText}:{DetailText}</div>
                     <div>
                         <select id={ID} defaultValue={DefaultValue} type="text" onChange={handleChange}>
@@ -99,14 +112,14 @@ function Inputrow(props) {
             );
         case 'text':
             return (
-                <div className="Row">
+                <div className={Classes.join(' ')}>
                     <div>{DisplayText}:{DetailText}</div>
                     <div><input id={ID} type="text" value={inputValue} onClick={handleClick} onChange={handleChange} />{PostText}</div>
                 </div>
             );
         default:
             return (
-                <div className="Row">
+                <div className={Classes.join(' ')}>
                     <div>{DisplayText}:{DetailText}</div>
                     <div><input id={ID} type="text" value={inputValue} onClick={handleClick} onChange={handleChange} />{PostText}</div>
                 </div>
