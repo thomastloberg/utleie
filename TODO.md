@@ -32,6 +32,7 @@ Migrer Utleiekalkulator v1.0.0 til React<br>
 ### Mangler
 - Dynamisk antall leiligheter/rom
 - Sikkerhet i bolig / kausjonist alternativ => Deaktiver egenkapital => Låst kapital hos kausjonist/bolig
+- utleieinntekter prosent av huskjøpssumm
 
 ### Utleiepris
 Kalkuler minimum utleie beløp<br>
