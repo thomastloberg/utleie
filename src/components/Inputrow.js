@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Select from 'react-select'
 import { TexttoID, readableNumber, removeSpaces } from '../js/Functions';
 
 /**
@@ -27,32 +26,41 @@ function Inputrow(props) {
 
     //console.log(`${Type} => Type === 'number' => ` + Boolean(Type === 'number').toString());
 
+
     /**
-     * Remove last letter first
+     * handleChange: Remove last number first
      */
-    function handlerInputChange(e){
-        if(Type === 'number'){
-            if(isNaN(removeSpaces(e.target.value))){                /* Not a Number - Prevent change */
-                e.preventDefault();
+    const handleChange = (e) => {
+        switch (Type) {
+            case 'number':
+                if(isNaN(removeSpaces(e.target.value))){                /* Not a Number - Prevent change */
+                    e.preventDefault();
 
-            } 
-            else if(e.target.value.length < inputValue.length){     /* Remove last number */
-                setValue(readableNumber(inputValue.slice(0, -1)));
+                } 
+                else if(e.target.value.length < inputValue.length){     /* Remove last number */
+                    setValue(readableNumber(inputValue.slice(0, -1)));
 
-            } 
-            else {                                                  /* Allow new number */
-                setValue(readableNumber(e.target.value));
-            }
-
-
-        } 
-        else if(Type === 'text'){
-            setValue(e.target.value);
-
-        } 
-        else if(Type === 'select'){
-            setValue(e.target.value);
+                } 
+                else {                                                  /* Allow new number */
+                    setValue(readableNumber(e.target.value));
+                }
+                break;
+            case 'select':
+                setValue(e.target.value);
+                break;
+            default:
+                setValue(e.target.value);
+                break;
         }
+    }
+
+    /**
+     * handleClick: Move cursor to ending
+     */
+    const handleClick = (e) => {
+        const {value} = e.target;
+        const position = value.length;
+        e.target.setSelectionRange(position, position);
     }
 
 
@@ -63,7 +71,7 @@ function Inputrow(props) {
         return (
             <div className="Row">
                 <div>{DisplayText}:{DetailText}</div>
-                <div><input id={ID} type="text" className="number" value={inputValue} onChange={handlerInputChange} />{PostText}</div>
+                <div><input id={ID} type="text" className="number" value={inputValue} onClick={handleClick} onChange={handleChange} />{PostText}</div>
             </div>
         );
 
@@ -72,7 +80,7 @@ function Inputrow(props) {
         return (
             <div className="Row">
                 <div>{DisplayText}:{DetailText}</div>
-                <div><input id={ID} type="text" className="number" value={inputValue} onChange={handlerInputChange} />{PostText}</div>
+                <div><input id={ID} type="text" className="number" value={inputValue} onClick={handleClick} onChange={handleChange} />{PostText}</div>
             </div>
         );
 
@@ -90,7 +98,7 @@ function Inputrow(props) {
             <div className="Row">
                 <div>{DisplayText}:{DetailText}</div>
                 <div>
-                    <select id={ID} defaultValue={DefaultValue} type="text" onChange={handlerInputChange}>
+                    <select id={ID} defaultValue={DefaultValue} type="text" onChange={handleChange}>
                         {options}
                     </select>
                 </div>

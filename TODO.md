@@ -26,6 +26,10 @@ Migrer Utleiekalkulator v1.0.0 til React<br>
         - Total Oversikt MND/ÅR<br>
  Side 3 - Plan<br><br>
 
+### Mangler
+- Dynamisk antall leiligheter/rom
+- Sikkerhet i bolig / kausjonist alternativ => Deaktiver egenkapital => Låst kapital hos kausjonist/bolig
+
 ### Utleiepris
 Kalkuler minimum utleie beløp<br>
 Maksimalpris vanskelig å estimere. Innverknad:<br>

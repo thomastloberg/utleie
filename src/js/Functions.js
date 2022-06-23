@@ -9,8 +9,12 @@ export function TexttoID(text){
 export function removeSpaces(inputString) {
     return inputString.replace(/\s/g, '');
 }
-export function readableNumber(inputString) {
-    return String(Math.round(inputString.replace(/\s/g, ''))).replace(/ /g,"").replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+export function readableNumber(inputString, rounding=false) {
+    if(rounding){
+        return String(Math.round(inputString.replace(/\s/g, ''))).replace(/ /g,"").replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+    } else {
+        return String((inputString.replace(/\s/g, ''))).replace(/ /g,"").replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+    }
 }
 export function roundPercent(inputInteger) {
     return Math.round(inputInteger * 100) / 100;;
