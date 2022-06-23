@@ -1,5 +1,10 @@
 export function TexttoID(text){
-    return text.replace('æ', 'ae').replace('ø', 'o').replace('å', 'aa');
+    /**
+     * Steps:
+     *      1. Remove spaces
+     *      2. Replace æ = ae, ø = o, å = aa
+     */
+    return text.replace(/\s/g, '').replace('æ', 'ae').replace('ø', 'o').replace('å', 'aa');
 }
 export function removeSpaces(inputString) {
     return inputString.replace(/\s/g, '');
