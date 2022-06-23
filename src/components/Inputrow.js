@@ -48,6 +48,9 @@ function Inputrow(props) {
             case 'select':
                 setValue(e.target.value);
                 break;
+            case 'text':
+                setValue(e.target.value);
+                break;
             default:
                 setValue(e.target.value);
                 break;
@@ -67,43 +70,47 @@ function Inputrow(props) {
     /**
      * Render Correct Input Type:
      */
-    if(Type === 'number'){
-        return (
-            <div className="Row">
-                <div>{DisplayText}:{DetailText}</div>
-                <div><input id={ID} type="text" className="number" value={inputValue} onClick={handleClick} onChange={handleChange} />{PostText}</div>
-            </div>
-        );
-
-    }
-    else if(Type === 'text'){
-        return (
-            <div className="Row">
-                <div>{DisplayText}:{DetailText}</div>
-                <div><input id={ID} type="text" className="number" value={inputValue} onClick={handleClick} onChange={handleChange} />{PostText}</div>
-            </div>
-        );
-
-    }
-    else if(Type === 'select'){
-        const Range_Min = SelectRange.split('-')[0];
-        const Range_Max = SelectRange.split('-')[1];
-
-        var options = [];
-        for (var i = Range_Min; i <= Range_Max; i++) {
-            options.push(<option key={i} value={i}>{i}{PostText}</option>);
-        }
-
-        return (
-            <div className="Row">
-                <div>{DisplayText}:{DetailText}</div>
-                <div>
-                    <select id={ID} defaultValue={DefaultValue} type="text" onChange={handleChange}>
-                        {options}
-                    </select>
+    switch (Type) {
+        case 'number':
+            return (
+                <div className="Row">
+                    <div>{DisplayText}:{DetailText}</div>
+                    <div><input id={ID} type="text" className="number" value={inputValue} onClick={handleClick} onChange={handleChange} />{PostText}</div>
                 </div>
-            </div>
-        );
+            );
+        case 'select':
+            const Range_Min = SelectRange.split('-')[0];
+            const Range_Max = SelectRange.split('-')[1];
+    
+            var options = [];
+            for (var i = Range_Min; i <= Range_Max; i++) {
+                options.push(<option key={i} value={i}>{i}{PostText}</option>);
+            }
+    
+            return (
+                <div className="Row">
+                    <div>{DisplayText}:{DetailText}</div>
+                    <div>
+                        <select id={ID} defaultValue={DefaultValue} type="text" onChange={handleChange}>
+                            {options}
+                        </select>
+                    </div>
+                </div>
+            );
+        case 'text':
+            return (
+                <div className="Row">
+                    <div>{DisplayText}:{DetailText}</div>
+                    <div><input id={ID} type="text" value={inputValue} onClick={handleClick} onChange={handleChange} />{PostText}</div>
+                </div>
+            );
+        default:
+            return (
+                <div className="Row">
+                    <div>{DisplayText}:{DetailText}</div>
+                    <div><input id={ID} type="text" value={inputValue} onClick={handleClick} onChange={handleChange} />{PostText}</div>
+                </div>
+            );
     }
 }
 
