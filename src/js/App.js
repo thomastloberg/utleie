@@ -6,12 +6,23 @@ function App() {
   return (
     <>
       <div className="ShareContainer">
-      ShareContainer
+      	<div className="ContainerContent">
+			<div className="DialogHeader">Del</div>
+			<div>Delings link:</div>
+			<div><input type="text" id="ShareLink" /></div>
+			<div className="btnGenerate noselect">Kopier!</div>
+		</div>
       </div>
 
 
       <div className="InputContainer">
         <div className="RowHeader">Utleiekalkulator</div>
+		<div className="AdLinkRow">
+			<div className="AdLink_Title">Annonse</div>
+			<div className="AdLink_URL"><input id="input_annonse" type="text" placeholder="https://" value="" /></div>
+			<div className="AdLink_Buttons"><span>Kopier</span> - <span>Se annonse</span></div>
+		</div>
+
         <Inputrow text='Kjøpesum' 			  type='number' defaultvalue='2300000' posttext=' kr' />
         <Inputrow text='Rente på lån' 		  type='number' detail='effektiv' defaultvalue='1.89' posttext=' %' />
         <Inputrow text='Egenkapital' 		  type='number' detail='effektiv' defaultvalue='345000' posttext={(<>kr<br /><span>Min: <font id="output_Egenkapital_Minimum"></font></span></>)} />

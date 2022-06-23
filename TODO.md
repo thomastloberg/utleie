@@ -1,4 +1,7 @@
 ## V2.0.0
+### Bugs
+- Chrome fjerner Adlink_URL input grunnet falsk "reklame". Omvei/rename?
+
 ### => React
 Migrer Utleiekalkulator v1.0.0 til React<br>
     CSS => SASS Migrering<br>
