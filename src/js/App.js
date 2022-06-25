@@ -1,10 +1,13 @@
+import { useState } from 'react';
 import '../css/App.scss';
 import Inputrow from '../components/Inputrow';
 import Textrow from '../components/Textrow';
+import Outputrow from '../components/Outputrow';
 
 function App() {
-  return (
-    <>
+	const[Annonse_URL, setAnnonse_URL] = useState('');
+
+	return (<>
       <div className="ShareContainer">
       	<div className="ContainerContent">
 			<div className="DialogHeader">Del</div>
@@ -19,7 +22,11 @@ function App() {
         <div className="RowHeader">Utleiekalkulator</div>
 		<div className="AnnonseRow CategorySplit_Short">
 			<div className="Annonse_Title">Annonse</div>
-			<div className="Annonse_URL"><input id="input_annonse" type="text" placeholder="https://" value="" /></div>
+			<div className="Annonse_URL">
+				<input id="input_annonse" type="text" placeholder="https://" 
+					value={Annonse_URL}
+					onChange={(e) => setAnnonse_URL(e.target.value)} />
+			</div>
 			<div className="Annonse_Buttons"><span>Kopier</span> - <span>Se annonse</span></div>
 		</div>
 
@@ -31,8 +38,10 @@ function App() {
 			firstcol={(<>Egenkapital:<br /><span>prosent</span></>)} 
 			secondcol={(<><div id="output_Egenkapital_Percent">15%</div></>)} 
 		/>
-		<Inputrow text='Ekstra kjøpsutgifter' type='number' defaultvalue='0' posttext=' kr' />
-        <Inputrow text='Dokumentavgift' 	  type='number' defaultvalue='2.5' posttext=' %' />
+		<Inputrow text='Ekstra kjøpsutgifter' type='number' defaultvalue='0' posttext=' kr' rowclassname='CategorySplit' />
+        
+		
+		<Inputrow text='Dokumentavgift' 	  type='number' defaultvalue='2.5' posttext=' %' />
         <Inputrow text='Inflasjon' 			  type='number' detail='per år' defaultvalue='2.24' posttext=' %' />
         <Inputrow text='Formueverdi' 		  type='number' defaultvalue='500000' posttext=' kr' />
         <Inputrow text='Skatteprosent' 		  type='number' detail='Overskudd' defaultvalue='22' posttext=' %' />
@@ -65,6 +74,68 @@ function App() {
 
       <div className="OutputContainer">
         <div className="RowHeader">Nøkkeltall</div>
+
+		<div className="AnnonseRow CategorySplit">
+			<div id="output_annonse">https://</div>
+		</div>
+
+		<Outputrow firsttext='Kjøpesum' secondtext=' kr' />
+        <Outputrow firsttext='Forhåndskostnad' firstdetail='egenkapital + dok.avgift + ekstra' secondtext=' kr' />
+		<Outputrow firsttext='Formueverdi' secondtext=' kr' />
+		<Outputrow firsttext='Lån' secondtext=' kr' />
+        <Outputrow  firsttext='Lån' firstdetail='av kjøpesum' secondtext='%' rowclassname='CategorySplit' />
+
+
+		<Outputrow 
+			firsttext='Kommunale avgifter' 	secondtext=' kr'
+			firstdetail='per mnd' 			seconddetail='skattefritt' />
+		<Outputrow 
+			firsttext='Vedlikehold' 	secondtext=' kr'
+			firstdetail='per mnd' 			seconddetail='skattefritt' />
+		<Outputrow 
+			firsttext='Fellesutgifter' 	secondtext=' kr'
+			firstdetail='per mnd' 			seconddetail='skattefritt' />
+		<Outputrow 
+			firsttext='Husforsikring' 	secondtext=' kr'
+			firstdetail='per mnd' 			seconddetail='skattefritt' />
+		<Outputrow 
+			firsttext='Søppelhandtering' 	secondtext=' kr'
+			firstdetail='per mnd' 			seconddetail='skattefritt' />
+		<Outputrow 
+			firsttext='Feier' 				econdtext=' kr'
+			firstdetail='per mnd' 			seconddetail='skattefritt' />
+		<Outputrow 
+			firsttext='Eiendomsskatt' 		secondtext=' kr'
+			firstdetail='per mnd' 			seconddetail='skattefritt' />
+		<Outputrow 
+			firsttext='Kommunale avgifter' 	secondtext=' kr'
+			firstdetail='per mnd' 			seconddetail='skattefritt' />
+		<Outputrow 
+			firsttext='Kommunale avgifter' 	secondtext=' kr'
+			firstdetail='per mnd' 			seconddetail='skattefritt' />
+		<Outputrow 
+			firsttext='Kommunale avgifter' 	secondtext=' kr'
+			firstdetail='per mnd' 			seconddetail='skattefritt' rowclassname='CategorySplit' />
+
+		
+		<Outputrow firsttext='Avdrag Lån' 		firstdetail='per mnd' secondtext=' kr' />
+		<Outputrow firsttext='Renter Lån' 		firstdetail='per mnd' secondtext=' kr' />
+		<Outputrow firsttext='Totale utgifter' 	firstdetail='per mnd' secondtext=' kr' rowclassname='CategorySplit' />
+
+
+		<Outputrow firsttext='Leieinntekter' 	firstdetail='per mnd etter skatt' secondtext=' kr' rowclassname='CategorySplit' />
+
+		
+		<Outputrow firsttext='Verdiøkning' 		firstdetail='Inflasjon per år' secondtext=' kr' />
+		<Outputrow firsttext='Fradrag på skatt' firstdetail='22% av årlig rente på lån' secondtext=' kr' />
+		<Outputrow firsttext='Total fortjeneste'firstdetail='per mnd' secondtext=' kr' />
+		<Outputrow firsttext='Total fortjeneste'firstdetail='per år' secondtext=' kr' rowclassname='CategorySplit' />
+
+		
+		<Outputrow firsttext='Salgssum' 			secondtext=' kr' />
+		<Outputrow firsttext='Salgsgevinst' 		firstdetail='etter skatt' secondtext=' kr' />
+		<Outputrow firsttext='Skatt av salg' 		secondtext=' kr' />
+		<Outputrow firsttext='Egenkapitalavkastning'secondtext=' kr' rowclassname='CategoryEnd' />
       </div>
 
 
@@ -91,8 +162,7 @@ function App() {
 				</div>
 			</div>
 		</div>
-    </>
-  );
+    </>);
 }
 
 export default App;

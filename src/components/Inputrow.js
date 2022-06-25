@@ -12,6 +12,9 @@ import { TexttoID, readableNumber, removeSpaces } from '../js/Functions';
  * rowclassname = More classes to add
  * posttext     = Text after the inputfield. Example: kr / %
  * range        = select range min-max
+ * 
+ * Example:
+ *      <Inputrow key='' text='' detail='' type='' defaultvalue='' rowclassname='' posttext='' range='' />
  * @returns 
  */
 function Inputrow(props) {
