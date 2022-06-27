@@ -240,6 +240,16 @@ input {
 	cursor: pointer;
 	white-space: nowrap;
 }
+.Outputrow_Col2Red {
+	div:nth-child(2) {
+		color: rgb(255, 89, 89);
+
+		span {
+			color: #000;
+		}
+	}
+}
+
 .AnnonseRow #output_annonse {
 	opacity: 0.7;
 	font-size: 14px;
