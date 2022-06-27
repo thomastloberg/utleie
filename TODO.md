@@ -1,7 +1,7 @@
 ## V2.0.0
 ### Bugs
 - Avdrag lån stemmer ikke med bankene sine utdrag. Hvor er feilen?
-- Chrome fjerner Adlink_URL input grunnet falsk "reklame". Omvei/rename?
+- Utrekningene stemmer ikke. Sjekk alt mellom Salg og Egenkapitalavkastning.
 
 ### => React
 Migrer Utleiekalkulator v1.0.0 til React<br>

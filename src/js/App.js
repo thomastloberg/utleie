@@ -138,68 +138,68 @@ function App() {
 
 
         <Inputrow text='Kjøpesum' 			  type='number' 
-				  posttext=' kr' state={['kjopesum', value: value, setValue: setValue]} />
+				  posttext=' kr' state={['kjopesum', value, setValue]} />
 		<Inputrow text='Rente på lån' 		  type='number' detail='effektiv' 
-				  posttext=' %' state={['effektiv_rente', value: value, setValue: setValue]} />
+				  posttext=' %' state={['effektiv_rente', value, setValue]} />
         <Inputrow text='Egenkapital' 		  type='number' detail='effektiv' posttext=' kr' 
 				  seconddetail={(<>Min: 
 				  	<font className='button' 
 				  			onClick={(e) => setValue({ ...value, egenkapital: (value['sekundaerbolig'] === true ? (value['kjopesum'] * 0.25) : (value['kjopesum'] * 0.15)) })}
 					> {(value['sekundaerbolig'] === true ? readableNumber(value['kjopesum'] * 0.25) :  readableNumber(value['kjopesum'] * 0.15))} kr</font></>)}
-				  state={['egenkapital', value: value, setValue: setValue]} />
+				  state={['egenkapital', value, setValue]} />
         <Textrow 
 			firstcol={(<>Egenkapital:<br /><span>prosent</span></>)} 
 			secondcol={(<><div>{roundPercent((value['egenkapital'] / value['kjopesum']) * 100)}%</div></>)} 
 		/>
 		<Inputrow text='Ekstra kjøpsutgifter' type='number' rowclassname='CategorySplit'
-				  posttext=' kr' state={['ekstra_kjopsutgifter', value: value, setValue: setValue]} />
+				  posttext=' kr' state={['ekstra_kjopsutgifter', value, setValue]} />
         
 		
 		<Inputrow text='Dokumentavgift' 	  type='number' 
-				  posttext=' %' state={['dokumentavgift', value: value, setValue: setValue]} />
+				  posttext=' %' state={['dokumentavgift', value, setValue]} />
         <Inputrow text='Inflasjon' 			  type='number' detail='per år' 
-				  posttext=' %' state={['inflasjon', value: value, setValue: setValue]} />
+				  posttext=' %' state={['inflasjon', value, setValue]} />
         <Inputrow text='Formueverdi' 		  type='number' 
 				  posttext={(<>kr<br /><span className='button' onClick={() => calcFormue()}>Estimer</span></>)} 
-				  state={['formueverdi', value: value, setValue: setValue]} />
+				  state={['formueverdi', value, setValue]} />
         <Inputrow text='Skatteprosent' 		  type='number' detail='Overskudd' 
-				  posttext=' %' state={['skatt_overskudd', value: value, setValue: setValue]} />
+				  posttext=' %' state={['skatt_overskudd', value, setValue]} />
         <Inputrow text='Salgskostnad' 		  type='number' detail='Prosent av verdi' rowclassname='CategorySplit' 
-				  posttext=' %' state={['salgskostnad', value: value, setValue: setValue]} />
+				  posttext=' %' state={['salgskostnad', value, setValue]} />
         
 
 		<Inputrow text='Kommunale avgifter'   type='number' detail='per år'
-				  posttext=' kr' state={['kommunaleavgifter', value: value, setValue: setValue]} />
+				  posttext=' kr' state={['kommunaleavgifter', value, setValue]} />
         <Inputrow text='Fellesutgifter'   	  type='number' detail='per mnd'
-				  posttext=' kr' state={['fellesutgifter', value: value, setValue: setValue]} />
+				  posttext=' kr' state={['fellesutgifter', value, setValue]} />
         <Inputrow text='Vedlikehold'   	  	  type='number' detail='per år'
-				  posttext=' kr' state={['vedlikehold', value: value, setValue: setValue]} />
+				  posttext=' kr' state={['vedlikehold', value, setValue]} />
         <Inputrow text='Husforsikring'   	  type='number' detail='per mnd' 
-				  posttext=' kr' state={['husforsikring', value: value, setValue: setValue]} />
+				  posttext=' kr' state={['husforsikring', value, setValue]} />
         <Inputrow text='Søppelhandtering'     type='number' detail='per mnd' 
-				  posttext=' kr' state={['soppelhandtering', value: value, setValue: setValue]} />
+				  posttext=' kr' state={['soppelhandtering', value, setValue]} />
         <Inputrow text='Feier'    			  type='number' detail='per mnd' 
-				  posttext=' kr' state={['feier', value: value, setValue: setValue]} />
+				  posttext=' kr' state={['feier', value, setValue]} />
         <Inputrow text='Eiendomsskatt'    	  type='number' detail='per mnd' rowclassname='CategorySplit'
-				  posttext=' kr' state={['eiendomsskatt', value: value, setValue: setValue]} />
+				  posttext=' kr' state={['eiendomsskatt', value, setValue]} />
         
 
 		<Inputrow text='Bruker over 50% av eiendomen selv?' type='checkbox'
-				  state={['bruker_over50selv', value: value, setValue: setValue]} />
+				  state={['bruker_over50selv', value, setValue]} />
 		<Inputrow text='Leieinntekter'    	  type='number' detail='Leilighet nr. 1' 
-				  posttext=' kr' state={['leie1', value: value, setValue: setValue]} />
+				  posttext=' kr' state={['leie1', value, setValue]} />
 		<Inputrow text='Leieinntekter'    	  type='number' detail='Leilighet nr. 2' 
-				  posttext=' kr' state={['leie2', value: value, setValue: setValue]} />
+				  posttext=' kr' state={['leie2', value, setValue]} />
 		<Inputrow text='Leieinntekter'    	  type='number' detail='Leilighet nr. 3'
-				  posttext=' kr' state={['leie3', value: value, setValue: setValue]} />
+				  posttext=' kr' state={['leie3', value, setValue]} />
 		<Inputrow text='Leieinntekter'    	  type='number' detail='Leilighet nr. 4' rowclassname='CategorySplit'
-				  posttext=' kr' state={['leie4', value: value, setValue: setValue]} />
+				  posttext=' kr' state={['leie4', value, setValue]} />
         
 
 		<Inputrow text='Antall år investering'type='select' range='1-30' 
-				  posttext='år' state={['invistering_lengd', value: value, setValue: setValue]} />
+				  posttext='år' state={['invistering_lengd', value, setValue]} />
         <Inputrow text='Antall år nedbetaling'type='select' rowclassname='CategoryEnd' range='1-30' 
-				  posttext='år' state={['nedbetaling_lengd', value: value, setValue: setValue]} />
+				  posttext='år' state={['nedbetaling_lengd', value, setValue]} />
         
 	  </div>
 
