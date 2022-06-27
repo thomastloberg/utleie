@@ -58,7 +58,8 @@ Generer json fil som inneholder data du la inn til share/<br><br>
 ### Faner
 Enkel<br>
 All data<br>
-Kalkulering<br><br>
+Kalkulering<br>
+Lanser app?<br><br>
 
 
 ## v3.0.0
