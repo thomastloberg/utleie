@@ -3,7 +3,8 @@ import '../css/App.scss';
 import Inputrow from '../components/Inputrow';
 import Textrow from '../components/Textrow';
 import Outputrow from '../components/Outputrow';
-import { readableNumber, roundPercent } from '../js/Functions';
+import PlanOutputrow from '../components/PlanOutputrow';
+import { readableNumber, roundPercent, diffMonths } from '../js/Functions';
 
 function App() {
 	// 	State Variables			Default Values
@@ -47,23 +48,16 @@ function App() {
 	let getKjopspris 		= Math.round(value['kjopesum'] + 
 										  value['ekstra_kjopsutgifter'] +
 										  (value['kjopesum'] * value['dokumentavgift'] / 100));
-
 	let getUtgiftervedkjop 	= Math.round(value['ekstra_kjopsutgifter'] + 
 										 value['egenkapital'] + 
 										 (value['kjopesum'] * (value['dokumentavgift'] / 100)));
-
 	let getLeieInntekter 	= (value['leie1'] + value['leie2'] + value['leie3'] + value['leie4']);
-
 	let getLaan 			= (value['kjopesum'] - value['egenkapital']);
-
 	let getLaan_avkjopssum 	= (((value['kjopesum'] - value['egenkapital']) / value['kjopesum']) * 100);
-
 	let getAvdrag 			= Math.round((getLaan / value['nedbetaling_lengd']) / 12);
 	let getRenter 			= Math.round(((getLaan * (value['effektiv_rente'] / 100)) / 12));
-
 	let getKomAvgifter_mnd	= Math.round(value['kommunaleavgifter'] / 12);
 	let getVedlikehold_mnd	= Math.round(value['vedlikehold'] / 12);
-
 	let getUtgifter_Skattfri 	= getKomAvgifter_mnd + 
 									value['fellesutgifter'] +
 									getVedlikehold_mnd + 
@@ -81,12 +75,9 @@ function App() {
 	if(getLeieInn_Skatt < 0) getLeieInn_Skatt = 0;				// Om skattefri utgifter overstiger leieinntekter
 
 	let getLeieInn_Etterskatt	= (getLeieInntekter - getLeieInn_Skatt);
-
 	let getVerdiokning 		 	= Math.round(value['kjopesum'] * (value['inflasjon'] / 100));
 	let getRentegodkjoring 		= Math.round((getRenter * 12) * 0.22); // 22% av renter betalt blir trukket av på skatten
-
 	let getTotalFortjeneste_ar  = Math.round((getLeieInn_Etterskatt * 12) - (getUtgifterTotal * 12) + getVerdiokning + getRentegodkjoring);
-
 	let getInflasjon 			= (value['inflasjon'] / 100);
 
 	let getSalgssum 			= value['kjopesum'];
@@ -97,12 +88,53 @@ function App() {
 
 	let getSalgsskatt			= Math.round(getSalgssum * (value['salgskostnad'] / 100));
 	let getSalgsprofitt			= (getSalgssum - getSalgsskatt);
-
-
 	let getInvisteringsprofitt	= ((getTotalFortjeneste_ar * value['invistering_lengd']) - getSalgsskatt);
 
 	let getKapitalavkastning	= Math.round(((getSalgsprofitt / (value['egenkapital'] + value['ekstra_kjopsutgifter'])) * 100) - 100) + '%';
 	if((value['egenkapital'] + value['ekstra_kjopsutgifter']) === 0) getKapitalavkastning = 'ingen kapital brukt';
+
+
+
+
+	/**
+	 * Plan
+	 */
+	let d 						= new Date();
+	let d_endofyear 			= new Date(d.getFullYear()+1,0,1);
+	let d_PercentLeftOfYear 	= diffMonths(d, d_endofyear) / 12;
+
+	// Default start values:
+	let calcLaan 			= getLaan;
+	let calcAvdrag 			= Math.round((calcLaan / value['nedbetaling_lengd']) / 12);
+	let calcRenter 			= Math.round(((calcLaan * (value['effektiv_rente'] / 100)) / 12));
+	let calcGjenstaandeLan 	= calcLaan;
+	let calcVerdiokning 	= Math.round(value['kjopesum'] * (value['inflasjon'] / 100));
+	let calcSalgsverdi 		= Math.round(calcLaan + calcVerdiokning);
+	let calcUtgifter 		= Math.round(getUtgifterTotal * 12);
+	let calcInntekter 		= Math.round(getLeieInn_Etterskatt * 12);
+	let calcSkattefratrekk 	= Math.round((calcRenter * 12) * 0.22); // 22% av renter betalt blir trukket av på skatten
+	let calcFortjeneste 	= Math.round(calcInntekter - calcUtgifter + getVerdiokning + getRentegodkjoring);
+
+
+
+	let getPlanTable = [];
+
+	for(let i = 0; i <= value['nedbetaling_lengd']; i++){
+		getPlanTable.push(<PlanOutputrow key={readableNumber(i)} rowIndex={readableNumber(i)} 
+				display={[
+						`${(d.getFullYear() + i)}`,
+						`-${readableNumber(calcAvdrag)} kr`,
+						`-${readableNumber(calcRenter)} kr`,
+						`${readableNumber(calcGjenstaandeLan)} kr`,
+						`${readableNumber(calcSalgsverdi)} kr`,
+						`-${readableNumber(calcUtgifter)} kr`,
+						`${readableNumber(calcInntekter)} kr`,
+						`${readableNumber(calcVerdiokning)} kr`,
+						`${readableNumber(calcSkattefratrekk)} kr`,
+						`${readableNumber(calcFortjeneste)} kr`
+					]} 
+			/>);
+	}
 
 
 
@@ -286,14 +318,16 @@ function App() {
 						<div>År</div>
 						<div>Avdrag</div>
 						<div>Renter</div>
-						<div>Gjenstående Lån</div>
+						<div>Lån</div>
 						<div>Salgsverdi</div>
 						<div>Utgifter</div>
 						<div>Inntekter</div>
 						<div>Verdiøkning</div>
-						<div>Skattefratrekk<br /><span>22% av renter</span></div>
-						<div>Fortjeneste<br /><span>Inntekter + Verdiøkning - Utgifter</span></div>
+						<div>Rentefradrag</div>
+						<div>Fortjeneste</div>
 					</div>
+
+					{getPlanTable}
 				</div>
 			</div>
 		</div>
